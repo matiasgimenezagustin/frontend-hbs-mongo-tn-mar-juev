@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    {{fecha}}
+    <form action="/register" method="POST">
+        <div>
+            <label for="name">Ingrese su nombre</label> <br />
+            <input type="text" name="name" id="name">
+        </div>
+        <div>
+            <label for="lastname">Ingrese su apellido</label> <br />
+            <input type="text" name="lastname" id="lastname" required>
+        </div>
+        <div>
+            <label for="age">Ingrese su edad</label> <br />
+            <input type="number" name="age" id="age">
+        </div>
+        <div>
+            <label for="email">Ingrese su email</label> <br />
+            <input type="text" name="email" id="email">
+        </div>
+        <div>
+            <label for="password">Ingrese su contraseña</label> <br />
+            <input type="text" name="password" id="password">
+        </div>
+        <button type="subbmit">Enviar</button>
+    </form>
+    {{#if error}}
+        {{error}}
+        {{else}}
+        <h2>No hay error</h2>
+    {{/if}}
+</body>
+
+</html>

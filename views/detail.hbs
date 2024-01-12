@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Detalle del producto</h1>
+    {{#if editMode}}
+        <form action="/products/{{product._id}}" method="post">
+            <h2>Titulo:<input value="{{product.title}}" name="title"/></h2>
+            <span>
+                Descripcion:
+                <textarea value="{{product.description}}" name="description"></textarea>
+            </span>
+            <br/>
+            <label>Precio:</label>
+            <input type="number" value="{{product.price}}" name="price"/>
+            <br/>
+            <span>Stock:</span><input value="{{product.stock}}" name="stock"/>
+            <div>Creado en: {{product.createdAt}}</div>
+            <a href="/products/{{product._id}}">Volver</a>
+            <input type="hidden" value="{{product._id}}" name="id" id="id"/>
+            <button type="submit">Confirmar</button>
+        </form>
+    {{else}}
+        <h2>{{product.title}}</h2>
+        <p>{{product.description}}</p>
+        <span>{{product.price}}</span>
+        <br/>
+        <span>Stock:{{product.stock}}</span>
+        <div>Creado en: {{product.createdAt}}</div>
+        {{#if isAdmin}}
+            <form action="/products/editRequest?pid={{product._id}}" method="post" >
+                <button type="submit" >
+                    Editar
+                </button>
+            </form>
+            <button>
+                Eliminar
+            </button>
+            {{else}}
+            <button>Comprar</button>
+        {{/if}}
+        
+    {{/if}}
+    
+    <hr/>
+</body>
+</html>
